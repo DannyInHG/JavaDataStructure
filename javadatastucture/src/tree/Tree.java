@@ -37,10 +37,11 @@ public class Tree {
 				}
 				else
 				{
-					
+//					do nothing
 				}
 				
-				//如果这里没有return的话，会出现没办法返回链接给孩子的情况，导致孩子始终都是null的。这是因为孩子的new是在递归子程序中的，有效的作用域只在子程序中，JVM会自动回收如果超出这个域。。。
+				//如果这里没有return的话，会出现没办法返回链接给孩子的情况，导致孩子始终都是null的。
+				//这是因为孩子的new是在递归子程序中的，有效的作用域只在子程序中，JVM会自动回收如果超出这个域。。。
 				node.lchild = createTree(node.lchild);
 				node.rchild = createTree(node.rchild);
 			}
@@ -54,12 +55,35 @@ public class Tree {
 		
 	}
 	
-	public void findNode(char data)
+	/**
+	 * 对二叉排序树的查找操作
+	 * @param data
+	 * @param node
+	 */
+	public void findNodeForBST(char data,Node node)
 	{
+		if(data == node.getData())
+		{
+			System.out.println("We get the dataLocation!");
+			return;
+		}
+		else if(data > node.getData() && node.rchild != null)
+		{
+			findNodeForBST(data,node.rchild);
+		}
+		else if(data < node.getData() && node.lchild != null)
+		{
+			findNodeForBST(data,node.lchild);
+		}
+		else
+		{
+			System.out.println("Sorry,we can't find the data!");
+			return ;
+		}
 		
 	}
 	
-	public void insertNode(char data)
+	public void insertNodeForBST(char data)
 	{
 		
 	}
@@ -70,6 +94,16 @@ public class Tree {
 	}
 	
 	public void inOrderTraverse(Node node)
+	{
+		if(node == null)
+			return;
+		inOrderTraverse(node.lchild);
+		node.displayNode();
+		inOrderTraverse(node.rchild);
+		
+	}
+	
+	public void preOrderTraverse(Node node)
 	{
 		if(node == null)
 			return;

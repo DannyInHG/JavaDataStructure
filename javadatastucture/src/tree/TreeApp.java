@@ -6,7 +6,7 @@ public class TreeApp {
 		Tree biTree = new Tree();
 		Node node = null;
 		biTree.createTree(node);
-		biTree.inOrderTraverse(biTree.getRoot());
-		
+		biTree.preOrderTraverse(biTree.getRoot());
+		biTree.findNodeForBST('E', biTree.getRoot());
 	}
 }
