@@ -17,5 +17,8 @@ public class TreeApp {
 		
 		biTree.preOrderTraverse(biTree.getRoot());
 		biTree.findNodeForBST('Q', biTree.getRoot());
+		biTree.deleteNode('D');
+		biTree.preOrderTraverse(biTree.getRoot());
+		
 	}
 }

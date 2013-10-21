@@ -83,6 +83,10 @@ public class Tree {
 		
 	}
 	
+	/**
+	 * 二叉排序树的插入方法，实现的方式与上面的创建很不同，没有返回值，但是仍然实现了树结构！！现在未明白为何。。。。。。。。
+	 * @param data
+	 */
 	public void insertNodeForBST(char data)
 	{
 		
@@ -131,7 +135,53 @@ public class Tree {
 	
 	public void deleteNode(char data)
 	{
+		Node node = root;
 		
+		while(true)
+		{
+			if(node.getData() > data && node.lchild != null)
+			{
+				if(node.lchild.getData() == data)
+				{
+					node.lchild = null;
+					System.out.println("Complete the deletion!");
+					return;
+				}
+				else
+					node = node.lchild;
+			}
+			else if(node.getData() > data && node.lchild == null)
+			{
+				System.out.println("Can't find the data !");
+				return;
+			}
+			else if(node.getData() < data && node.rchild != null)
+			{
+				if(node.rchild.getData() == data)
+				{
+					node.rchild = null;
+					System.out.println("Complete the deletion!");
+					return;
+				}
+				else
+					node = node.rchild;
+			}
+			else if(node.getData() < data && node.rchild == null)
+			{
+				System.out.println("Can't find the data !");
+				return;
+			}
+			else if(node.getData() == data)
+			{
+				System.out.println("You shouldn't delete the root!");
+				return ;
+			}
+			else
+			{
+				System.out.println("deleteNode Error");
+				return;
+			}
+		}
 	}
 	
 	public void inOrderTraverse(Node node)
