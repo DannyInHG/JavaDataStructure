@@ -86,6 +86,47 @@ public class Tree {
 	public void insertNodeForBST(char data)
 	{
 		
+		if(root == null)
+		{
+			root = new Node(data);
+		}
+		else
+		{
+			Node node = root;
+			
+			while(true)
+			{
+				if(node.getData() > data && node.lchild != null)
+				{
+					node = node.lchild;
+				}
+				else if(node.getData() > data && node.lchild == null)
+				{
+					node.lchild = new Node(data);
+					return;
+				}
+				else if(node.getData() < data && node.rchild != null)
+				{
+					node = node.rchild;
+				}
+				else if(node.getData() < data && node.rchild == null)
+				{
+					node.rchild = new Node(data);
+					return;
+				}
+				else if(node.getData() == data)
+				{
+					System.out.println("The number you want to insert is exist!");
+					return;
+				}
+				else
+				{
+					System.out.println("insertNode Error");
+					return;
+				}
+			}
+			
+		}
 	}
 	
 	public void deleteNode(char data)
